@@ -10,19 +10,17 @@ template<
 	private:
 		size_t	size;
 	public:
-		typedef value_type				T;
-		typedef allocator_type			Allocator;
-		typedef pointer					typename Allocator::pointer;
-		typedef const_pointer			typename Allocator::const_pointer;
-		typedef reference				value_type&;
-		typedef const_reference			const value_type&;
-		typedef size_type				size() const;
-		typedef difference_type			std::ptrdiff_t;
-		typedef iterator				= /* implementation-defined */;
-		typedef const_iterator			= /* implementation-defined */;
-		typedef reverse_iterator		= std::reverse_iterator<iterator>; // TMP need to reimplement
-		typedef const_reverse_iterator	= std::reverse_iterator<const_iterator>; // TMP need to reimplement
-
-	size_t size() {return this->size;};
-};
+		typedef T										value_type;
+		typedef Allocator								allocator_type;
+		typedef typename Allocator::pointer				pointer;
+		typedef typename Allocator::const_pointer		const_pointer;
+		typedef value_type&								reference;
+		typedef const value_type&						const_reference;
+		typedef std::size_t								size_type;
+		typedef std::ptrdiff_t							difference_type;
+		typedef ft::iterator_traits<value_type>			iterator;
+		typedef ft::iterator_traits<const value_type>	const_iterator;
+		typedef std::reverse_iterator<iterator>			reverse_iterator; // TMP need to reimplement
+		typedef std::reverse_iterator<const_iterator>	const_reverse_iterator; // TMP need to reimplement
+	};
 }
