@@ -245,14 +245,15 @@ namespace ft
 			reference operator*() const
 			{
 				iterator_type tmp(mItType);
-				return *(tmp -= 1);
+				--tmp;
+				return *tmp;
 			}
 
 			pointer	operator->() const
 			{
 				iterator_type tmp(mItType);
 				tmp--;
-				return tmp.base();
+				return to_pointer(tmp);
 			}
 
 			reverse_iterator operator+(difference_type n) const {return(reverse_iterator(mItType - n)); }
@@ -301,6 +302,17 @@ namespace ft
 			{
 				return *(mItType - n - 1);
 			}
+			private:
+				template<typename T1>
+				static T1* to_pointer(T1* p)
+				{
+					return p;
+				}
+				template<typename T1>
+				static pointer to_pointer(T1 t)
+				{
+					return t.operator->();
+				}
 	};
 
 	template <class It>

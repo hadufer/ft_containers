@@ -160,8 +160,8 @@ namespace ft {
 			typedef Node<value_type>								node;
 			typedef ft::TreeIterator<value_type, node>				iterator;
 			typedef ft::TreeIterator<const value_type, node>		const_iterator;
-			typedef std::reverse_iterator<iterator>					reverse_iterator;
-			typedef std::reverse_iterator<const_iterator>			const_reverse_iterator;
+			typedef ft::reverse_iterator<iterator>					reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 		private:
 			node*													mRootNodePtr;
 			node*													mLastPtr;
