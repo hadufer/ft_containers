@@ -243,26 +243,26 @@ namespace ft{
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator<(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		return ft::lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end());
-		// return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+		return ft::lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end(), lhs.value_comp());
+		// return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end(), lhs.value_comp());
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator<=(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		return ((lhs < rhs) || ( lhs == rhs));
+		return (!(rhs<lhs));
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator>(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		return (!(lhs < rhs) && !(lhs == rhs));
+		return (rhs < lhs);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator>=(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		return ((lhs > rhs) || ( lhs == rhs));
+		return (!(lhs<rhs));
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
