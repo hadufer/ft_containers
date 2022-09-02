@@ -2,6 +2,8 @@
 #include <memory>
 #include "vector.hpp"
 #include "tree.hpp"
+#include "iterator.hpp"
+#include "stack.hpp"
 #include "utils.hpp"
 #include "pair.hpp"
 
@@ -234,9 +236,9 @@ namespace ft{
 	{
 		std::map<Key, T, Compare, Alloc> test;
 		std::map<Key, T, Compare, Alloc> test2;
-		for(typename ft::map<Key, T>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
+		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
 			test.insert(std::make_pair(it->first, it->second));
-		for(typename ft::map<Key, T>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
+		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
 			test2.insert(std::make_pair(it->first, it->second));
 		return (test == test2);
 	}
@@ -252,9 +254,9 @@ namespace ft{
 	{
 		std::map<Key, T, Compare, Alloc> test;
 		std::map<Key, T, Compare, Alloc> test2;
-		for(typename ft::map<Key, T>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
+		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
 			test.insert(std::make_pair(it->first, it->second));
-		for(typename ft::map<Key, T>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
+		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
 			test2.insert(std::make_pair(it->first, it->second));
 		return (test < test2);
 	}

@@ -1,5 +1,9 @@
 #pragma once
 #include <uchar.h>
+#include <iterator>
+#include <vector>
+#include <map>
+#include <iostream>
 
 namespace ft {
 
@@ -49,3 +53,13 @@ namespace ft {
 		return true;
 	}
 }
+
+
+
+
+
+
+
+
+
+#include <map>
