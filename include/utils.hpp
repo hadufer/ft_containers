@@ -1,5 +1,4 @@
 #pragma once
-#include <uchar.h>
 #include <iterator>
 #include <vector>
 #include <map>
