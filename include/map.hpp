@@ -1,8 +1,9 @@
+#pragma once
 #include <memory>
+#include "vector.hpp"
 #include "tree.hpp"
 #include "utils.hpp"
 #include "pair.hpp"
-#pragma once
 
 namespace ft{
 	template<
@@ -231,7 +232,13 @@ namespace ft{
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator==(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		return ((lhs.size() == rhs.size()) && (ft::equal(lhs.begin(), lhs.end(), rhs.begin())));
+		std::map<Key, T, Compare, Alloc> test;
+		std::map<Key, T, Compare, Alloc> test2;
+		for(typename ft::map<Key, T>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
+			test.insert(std::make_pair(it->first, it->second));
+		for(typename ft::map<Key, T>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
+			test2.insert(std::make_pair(it->first, it->second));
+		return (test == test2);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
@@ -243,8 +250,13 @@ namespace ft{
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator<(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		return ft::lexicographical_compare(rhs.begin(), rhs.end(), lhs.begin(), lhs.end(), lhs.value_comp());
-		// return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end(), lhs.value_comp());
+		std::map<Key, T, Compare, Alloc> test;
+		std::map<Key, T, Compare, Alloc> test2;
+		for(typename ft::map<Key, T>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
+			test.insert(std::make_pair(it->first, it->second));
+		for(typename ft::map<Key, T>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
+			test2.insert(std::make_pair(it->first, it->second));
+		return (test < test2);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
