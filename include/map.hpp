@@ -246,13 +246,7 @@ namespace ft{
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator!=(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		std::map<Key, T, Compare> test;
-		std::map<Key, T, Compare> test2;
-		for(typename ft::map<Key, T>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
-			test.insert(std::make_pair(it->first, it->second));
-		for(typename ft::map<Key, T>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
-			test2.insert(std::make_pair(it->first, it->second));
-		return (test != test2);
+		return !(lhs == rhs);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
@@ -268,39 +262,21 @@ namespace ft{
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
-	bool operator<=(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
-	{
-		std::map<Key, T, Compare> test;
-		std::map<Key, T, Compare> test2;
-		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
-			test.insert(std::make_pair(it->first, it->second));
-		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
-			test2.insert(std::make_pair(it->first, it->second));
-		return (test <= test2);
-	}
-
-	template <class Key, class T, class Compare, class Alloc>
 	bool operator>(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		std::map<Key, T, Compare> test;
-		std::map<Key, T, Compare> test2;
-		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
-			test.insert(std::make_pair(it->first, it->second));
-		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
-			test2.insert(std::make_pair(it->first, it->second));
-		return (test > test2);
+		return (rhs < lhs);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator>=(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
 	{
-		std::map<Key, T, Compare> test;
-		std::map<Key, T, Compare> test2;
-		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = lhs.begin(); it != lhs.end(); it++)
-			test.insert(std::make_pair(it->first, it->second));
-		for(typename ft::map<Key, T, Compare, Alloc>::const_iterator it = rhs.begin(); it != rhs.end(); it++)
-			test2.insert(std::make_pair(it->first, it->second));
-		return (test >= test2);
+		return !(lhs < rhs);
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator<=(const ft::map<Key, T, Compare, Alloc> &lhs, const ft::map<Key, T, Compare, Alloc> &rhs)
+	{
+		return !(rhs < lhs);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
