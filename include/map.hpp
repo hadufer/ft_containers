@@ -117,48 +117,6 @@ namespace ft{
 				this->mValCompare = tmpMap.mValCompare;
 			}
 
-			iterator begin() { return iterator(mTree.begin()); }
-
-			reverse_iterator rbegin() { return reverse_iterator(mTree.rbegin()); }
-
-			const_iterator begin() const { return const_iterator(mTree.begin()); }
-
-			const_reverse_iterator rbegin() const { return const_reverse_iterator(mTree.rbegin()); }
-
-			iterator end() { return iterator(mTree.end()); }
-
-			reverse_iterator rend() { return reverse_iterator(mTree.rend()); }
-
-			const_iterator end() const { return const_iterator(mTree.end()); }
-
-			const_reverse_iterator rend() const { return const_reverse_iterator(mTree.rend()); }
-
-			bool empty() const { return mTree.size() == 0; }
-
-			size_type size(void) const { return mTree.size(); }
-
-			size_type max_size() const { return mTree.max_size();}
-
-			mapped_type &operator[](const key_type &k) { return (*((this->insert(ft::make_pair(k, mapped_type()))).first)).second; }
-
-			pair<iterator, bool> insert(const value_type &val) { return mTree.insert(val); }
-
-			iterator insert(iterator position, const value_type &val) { return mTree.insert(position, val); }
-
-			void clear() { mTree.clear(); }
-
-			key_compare key_comp() const { return this->mkeyCompare; }
-
-			value_compare value_comp() const { return this->mValCompare; }
-
-			iterator find(const key_type &k) { return mTree.find(ft::make_pair(k, mapped_type())); }
-
-			const_iterator find(const key_type &k) const { return mTree.find(ft::make_pair(k, mapped_type())); }
-
-			size_type count(const key_type &k) const { return (mTree.find(ft::make_pair(k, mapped_type())) != mTree.end()); }
-
-			allocator_type get_allocator() const { return this->mAllocator; }
-			
 			iterator lower_bound(const key_type &k)
 			{
 				iterator	it(mTree.begin());
@@ -228,6 +186,48 @@ namespace ft{
 				ret = ft::make_pair(low, up);
 				return (ret);
 			}
+
+			iterator begin() { return iterator(mTree.begin()); }
+
+			reverse_iterator rbegin() { return reverse_iterator(mTree.rbegin()); }
+
+			const_iterator begin() const { return const_iterator(mTree.begin()); }
+
+			const_reverse_iterator rbegin() const { return const_reverse_iterator(mTree.rbegin()); }
+
+			iterator end() { return iterator(mTree.end()); }
+
+			reverse_iterator rend() { return reverse_iterator(mTree.rend()); }
+
+			const_iterator end() const { return const_iterator(mTree.end()); }
+
+			const_reverse_iterator rend() const { return const_reverse_iterator(mTree.rend()); }
+
+			bool empty() const { return mTree.size() == 0; }
+
+			size_type size(void) const { return mTree.size(); }
+
+			size_type max_size() const { return mTree.max_size();}
+
+			mapped_type &operator[](const key_type &k) { return (*((this->insert(ft::make_pair(k, mapped_type()))).first)).second; }
+
+			pair<iterator, bool> insert(const value_type &val) { return mTree.insert(val); }
+
+			iterator insert(iterator position, const value_type &val) { return mTree.insert(position, val); }
+
+			void clear() { mTree.clear(); }
+
+			key_compare key_comp() const { return this->mkeyCompare; }
+
+			value_compare value_comp() const { return this->mValCompare; }
+
+			iterator find(const key_type &k) { return mTree.find(ft::make_pair(k, mapped_type())); }
+
+			const_iterator find(const key_type &k) const { return mTree.find(ft::make_pair(k, mapped_type())); }
+
+			size_type count(const key_type &k) const { return (mTree.find(ft::make_pair(k, mapped_type())) != mTree.end()); }
+
+			allocator_type get_allocator() const { return this->mAllocator; }
 
 	};
 

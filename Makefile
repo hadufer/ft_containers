@@ -1,26 +1,31 @@
-NAME = Test
-CC = c++
-RM = rm -f
-CFLAGS = -g -Wall -Werror -Wextra -std=c++98
+SRCS_TEST    =  test.cpp
+SRCS_TIME    =  test_time.cpp
+OSRCS_TEST   =  ${SRCS_TEST:.cpp=.o}
+OSRCS_TIME   =  ${SRCS_TIME:.cpp=.o}
+NAME_TEST_FT =  test_ft
+NAME_TEST_STD = test_std
+NAME_TIME =     test_time
 
-SRCS = map.cpp
+all : ${NAME_TIME} ${NAME_TEST_FT} ${NAME_TEST_STD} 
 
-OBJS = $(SRCS:.cpp=.o)
+%.o: %.cpp 
+	c++ -Wall -Werror -Wextra -std=c++98 -I./include -fsanitize=address -c $< -o ${<:.cpp=.o} -g
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+${NAME_TEST_FT} :
+	c++ -Wall -Werror -Wextra -std=c++98 -I./include -D NAMESPACE=ft ${SRCS_TEST} -o ${NAME_TEST_FT} 
 
-all: $(NAME)
+${NAME_TEST_STD} :
+	c++ -Wall -Werror -Wextra -std=c++98 -I./include -D NAMESPACE=std ${SRCS_TEST} -o ${NAME_TEST_STD} 
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+${NAME_TIME} :  ${OSRCS_TIME}
+	c++ -Wall -Werror -Wextra -std=c++98 -fsanitize=address  ${OSRCS_TIME} -o ${NAME_TIME} -g
 
-clean:
-	$(RM) $(OBJS)
+clean :
+	rm -f ${OSRCS_TEST} ${OSRCS_TIME}
 
-fclean: clean
-	$(RM) $(NAME)
+fclean : clean
+	rm -f ${NAME_TEST_FT} ${NAME_TEST_STD} ${NAME_TIME}
 
-re: fclean all
+re : fclean all
 
-.PHONY: all clean flcean re
+.PHONY: all clean fclean re
